@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block bod %}
+    <br><br>
+    {{ message }}
+    <br><br>
+Ingrese el id de la pelicula o serie de IMDB:
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+
+{% endblock %}

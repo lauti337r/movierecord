@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="https://fonts.googleapis.com/css?family=David+Libre" rel="stylesheet">
+            <style>
+                div.header{
+                    background-image: url(header.png);
+                }
+                div.title{
+                    margin: 20px;
+                    opacity: 0.8;
+                    background-color: #ffffff;
+                    border: 1px solid black;
+                    font-size: 100px;
+                }
+                div.title p {
+                    margin: 5%;
+                    font-weight: bold;
+                    color: #000000;
+                }
+                .clearfix{
+                    overflow: auto;
+                    width:80%;
+                }
+                .data{
+                    width: 65%;
+                    text-align: left;
+                    font-size: large;
+                    font-weight: normal;
+                }
+                .poster{
+                    width: 35%;
+                }
+                body{
+                    text-align: center;
+                    font-family: David Libre, sans-serif;
+                }
+                ul#menu {
+                    padding: 0;
+                }
+
+                ul#menu li {
+                    display: inline;
+                }
+
+                ul#menu li a {
+                    background-color: black;
+                    color: white;
+                    padding: 10px 20px;
+                    text-decoration: none;
+                    border-radius: 4px 4px 0 0;
+                }
+
+                ul#menu li a:hover {
+                    background-color: green;
+                body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
+                h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
+                h1 { font-size: 36px; }
+                h2 { font-size: 21px; margin-bottom: 1em; }
+                p { margin: 0 0 1em 0; }
+                a { color: #0000F0; }
+                a:hover { text-decoration: none; }
+                code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
+                #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+                #container { padding: 2em; }
+                #welcome, #status { margin-bottom: 2em; }
+                #welcome h1 span { display: block; font-size: 75%; }
+                #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
+                #icon-book { display: none; }
+
+                @media (min-width: 768px) {
+                    #wrapper { width: 80%; margin: 2em auto; }
+                    #icon-book { display: inline-block; }
+                    #status a, #next a { display: block; }
+
+                    @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+                    @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+                    .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
+                }
+            </style>
+        {% endblock %}
+        <div class="header">
+            <div class="title">
+                HEADER
+            </div>
+        </div>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <ul id="menu">
+            <li><a href="">Main</a></li>
+            <li><a href="movies">Movies</a></li>
+            <li><a href="series">Series</a></li>
+            <li><a href="contact">Contacto</a></li>
+        </ul>
+    </head>
+    {% block bod %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'movies\\index.html.twig' %}
+{% block movies %}
+    {% for pelicula in peliculas %}
+        <table class="clearfix" align="center">
+            <th class="poster">
+                <img src="{{ pelicula.poster }}">
+            </th>
+            <th class="data"><br><br>
+                <span style="font-size: larger"> <b>Titulo:</b><span style="text-transform: uppercase;"> {{ pelicula.titulo }}</span></span><br><br><br>
+                <b>Genero:</b>
+                {% for genero in pelicula.generos %}
+                {% if genero=="N/A" %}
+                    {% if loop.last %}
+                        {{ genero }}.
+                    {% else %}
+                        {{ genero }},
+                    {% endif %}
+                {% elseif loop.last %}
+                    <a href="genre/{{ genero }}">{{ genero }}</a>.
+                {% else %}<a href="genre/{{ genero }}">{{ genero }}</a>,
+                {% endif %}
+                {% endfor %}<br>
+                <b>Año:</b> {{ pelicula.anio }}<br>
+                <b>Director:</b>
+                {% if pelicula.director == "N/A" %}
+                    {{ pelicula.director }}.
+                {% else %}<a href="artist/{{ pelicula.director }}">{{ pelicula.director }}</a>.<br>
+                {% endif %}
+                <b>Actores:</b>
+                {% for actor in pelicula.actores %}
+                {% if loop.last %}<a href="artist/{{ actor }}">{{ actor }}</a>.
+                {% else %}<a href="artist/{{ actor }}">{{ actor }}</a>,
+                {% endif %}
+                {% endfor %}<br>
+                <b>Sinopsis:</b> {{ pelicula.sinopsis }}<br>
+                <b>Porque verla?:</b> {{ pelicula.opinion }}<br>
+            </th>
+        </table>
+    {% endfor %}
+
+{% endblock %}

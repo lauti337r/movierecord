@@ -1,0 +1,121 @@
+{% extends 'artist\\index.html.twig' %}
+
+{% block artistdata %}
+{% if appmovie!=-1 %}
+    <h1>PELICULAS EN LAS QUE APARECE <i>{{ artist }}</i></h1>
+        {% for pelicula in appmovie %}
+            <table class="clearfix" align="center">
+                <th class="poster">
+                    <img src="..\{{ pelicula.poster }}">
+                </th>
+                <th class="data"><br><br>
+                    <span style="font-size: larger"> <b>Titulo:</b><span style="text-transform: uppercase;"> {{ pelicula.titulo }}</span></span><br><br><br>
+                    <b>Genero:</b>
+                    {% for genero in pelicula.generos %}
+                    {% if loop.last %}<a href="genre/{{ genero }}">{{ genero }}</a>.
+                    {% else %}<a href="genre/{{ genero }}">{{ genero }}</a>,
+                    {% endif %}
+                    {% endfor %}<br>
+                    <b>Año:</b> {{ pelicula.anio }}<br>
+                    <b>Director:</b> <a href="{{ pelicula.director }}">{{ pelicula.director }}</a><br>
+                    <b>Actores:</b>
+                    {% for actor in pelicula.actores %}
+                    {% if loop.last %}<a href="{{ actor }}">{{ actor }}</a>.
+                    {% else %}<a href="{{ actor }}">{{ actor }}</a>,
+                    {% endif %}
+                    {% endfor %}<br>
+                    <b>Sinopsis:</b> {{ pelicula.sinopsis }}<br>
+                    <b>Porque verla?:</b> {{ pelicula.opinion }}<br>
+                </th>
+            </table>
+        {% endfor %}
+{% endif %}
+{% if dirmovie!=-1 %}
+    <h1>PELICULAS DIRIGIDAS POR <i>{{ artist }}</i></h1>
+        {% for pelicula in dirmovie %}
+            <table class="clearfix" align="center">
+                <th class="poster">
+                    <img src="..\{{ pelicula.poster }}">
+                </th>
+                <th class="data"><br><br>
+                    <span style="font-size: larger"> <b>Titulo:</b><span style="text-transform: uppercase;"> {{ pelicula.titulo }}</span></span><br><br><br>
+                    <b>Genero:</b>
+                    {% for genero in pelicula.generos %}
+                    {% if loop.last %}<a href="genre/{{ genero }}">{{ genero }}</a>.
+                    {% else %}<a href="genre/{{ genero }}">{{ genero }}</a>,
+                    {% endif %}
+                    {% endfor %}<br>
+                    <b>Año:</b> {{ pelicula.anio }}<br>
+                    <b>Director:</b> <a href="artist/{{ pelicula.director }}">{{ pelicula.director }}</a><br>
+                    <b>Actores:</b>
+                    {% for actor in pelicula.actores %}
+                    {% if loop.last %}<a href="artist/{{ actor }}">{{ actor }}</a>.
+                    {% else %}<a href="artist/{{ actor }}">{{ actor }}</a>,
+                    {% endif %}
+                    {% endfor %}<br>
+                    <b>Sinopsis:</b> {{ pelicula.sinopsis }}<br>
+                    <b>Porque verla?:</b> {{ pelicula.opinion }}<br>
+                </th>
+            </table>
+        {% endfor %}
+{% endif %}
+{% if apptvshow!=-1 %}
+    <h1>SERIES EN LAS QUE APARECE <i>{{ artist }}</i></h1>
+        {% for tvshow in apptvshow %}
+            <table class="clearfix" align="center">
+                <th class="poster">
+                    <img style="min-width: 250px;max-width: 35%;" src="../{{ tvshow.poster }}">
+                </th>
+                <th class="data"><br><br>
+                    <span style="font-size: larger"> <b>Titulo:</b><span style="text-transform: uppercase;"> {{ tvshow.titulo }}</span></span><br><br><br>
+                    <b>Genero: </b>
+                    {% for genero in tvshow.generos %}
+                    {% if loop.last %}<a href="genre/{{ genero }}">{{ genero }}</a>.
+                    {% else %}<a href="genre/{{ genero }}">{{ genero }}</a>,
+                    {% endif %}
+                    {% endfor %}<br>
+                    <b>Año: </b>{{ tvshow.anio_i }} - {{ tvshow.anio_f }} <br>
+                    <b>Escritor: </b><a href="artist/{{ tvshow.escritor }}">{{ tvshow.escritor }}</a><br>
+                    <b>Actores: </b>
+                    {% for actor in tvshow.actores %}
+                    {% if loop.last %}<a href="artist/{{ actor }}">{{ actor }}</a>.
+                    {% else %}<a href="artist/{{ actor }}">{{ actor }}</a>,
+                    {% endif %}
+                    {% endfor %}<br>
+                    <b>Sinopsis: </b>{{ tvshow.sinopsis }}<br>
+                    <b>Porque verla?: </b>{{ tvshow.opinion }}<br>
+                </th>
+            </table>
+        {% endfor %}
+{% endif %}
+{% if writvshow!=-1 %}
+    <h1>SERIES ESCRITAS POR <i>{{ artist }}</i></h1>
+        {% for tvshow in writvshow %}
+            <table class="clearfix" align="center">
+                <th class="poster">
+                    <img style="min-width: 250px;max-width: 35%;" src="../{{ tvshow.poster }}">
+                </th>
+                <th class="data"><br><br>
+                    <span style="font-size: larger"> <b>Titulo:</b><span style="text-transform: uppercase;"> {{ tvshow.titulo }}</span></span><br><br><br>
+                    <b>Genero: </b>
+                    {% for genero in tvshow.generos %}
+                    {% if loop.last %}<a href="genre/{{ genero }}">{{ genero }}</a>.
+                    {% else %}<a href="genre/{{ genero }}">{{ genero }}</a>,
+                    {% endif %}
+                    {% endfor %}<br>
+                    <b>Año: </b>{{ tvshow.anio_i }} - {{ tvshow.anio_f }} <br>
+                    <b>Escritor: </b><a href="artist/{{ tvshow.escritor }}">{{ tvshow.escritor }}</a><br>
+                    <b>Actores: </b>
+                    {% for actor in tvshow.actores %}
+                    {% if loop.last %}<a href="artist/{{ actor }}">{{ actor }}</a>.
+                    {% else %}<a href="artist/{{ actor }}">{{ actor }}</a>,
+                    {% endif %}
+                    {% endfor %}<br>
+                    <b>Sinopsis: </b>{{ tvshow.sinopsis }}<br>
+                    <b>Porque verla?: </b>{{ tvshow.opinion }}<br>
+                </th>
+            </table>
+        {% endfor %}
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'tvshows\\index.html.twig' %}
+{% block tvshows %}
+    {% for tvshow in tvshows %}
+        <table class="clearfix" align="center">
+            <th class="poster">
+                <img style="min-width: 250px;max-width: 35%;" src="{{ tvshow.poster }}">
+            </th>
+            <th class="data"><br><br>
+                <span style="font-size: larger"> <b>Titulo:</b><span style="text-transform: uppercase;"> {{ tvshow.titulo }}</span></span><br><br><br>
+                <b>Genero: </b>
+                {% for genero in tvshow.generos %}
+                {% if genero=="N/A" %}
+                    {% if loop.last %}
+                        {{ genero }}.
+                    {% else %}
+                        {{ genero }},
+                    {% endif %}
+                {% elseif loop.last %}
+                    <a href="genre/{{ genero }}">{{ genero }}</a>.
+                {% else %}<a href="genre/{{ genero }}">{{ genero }}</a>,
+                {% endif %}
+                {% endfor %}<br>
+                <b>Año: </b>{{ tvshow.anio_i }} - {{ tvshow.anio_f }} <br>
+                <b>Escritor: </b>
+                {% if tvshow.escritor == "N/A" %}{{ tvshow.escritor }}.<br>
+                    {% else %}<a href="artist/{{ tvshow.escritor }}">{{ tvshow.escritor }}</a>.<br>
+                {% endif %}
+                <b>Actores: </b>
+                {% for actor in tvshow.actores %}
+                {% if loop.last %}<a href="artist/{{ actor }}">{{ actor }}</a>.
+                {% else %}<a href="artist/{{ actor }}">{{ actor }}</a>,
+                {% endif %}
+                {% endfor %}<br>
+                <b>Sinopsis: </b>{{ tvshow.sinopsis }}<br>
+                <b>Porque verla?: </b>{{ tvshow.opinion }}<br>
+            </th>
+        </table>
+    {% endfor %}
+
+{% endblock %}
