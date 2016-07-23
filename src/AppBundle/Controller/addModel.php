@@ -110,17 +110,20 @@ class addModel{
     }
 
     function idArt($art){
-        $db = new \mysqli("localhost","root","","w2w");
+        global $db;
+        //$db = new \mysqli("localhost","root","","w2w");
         return $db->query("SELECT id FROM artist WHERE name=\"$art\"")->fetch_row()[0];
     }
 
     function idGen($gen){
-        $db = new \mysqli("localhost","root","","w2w");
+        global $db;
+        //$db = new \mysqli("localhost","root","","w2w");
         return $db->query("SELECT id FROM genre WHERE name=\"$gen\"")->fetch_row()[0];
     }
 
     function insertMovie($title,$idDir,$year,$plot,$review,$runtime,$date,$poster){
-        $db = new \mysqli("localhost","root","","w2w");
+        global $db;
+        //$db = new \mysqli("localhost","root","","w2w");
         $db->query("INSERT INTO movie(id,title,id_dir,year,plot,review,runtime,releaseDate,poster)
                     VALUES(null,\"$title\",$idDir,$year,\"$plot\",\"$review\",$runtime,\"$date\",\"$poster\")");
         if($db->insert_id)
@@ -130,7 +133,8 @@ class addModel{
     }
 
     function insertTVShow($title,$idWri,$year_s,$year_e,$seasons,$plot,$review,$poster){
-        $db = new \mysqli("localhost","root","","w2w");
+        global $db;
+        //$db = new \mysqli("localhost","root","","w2w");
         $db->query("INSERT INTO tvshow(id,title,id_writer,year_s,year_e,seasons,episodes,plot,review,poster) 
                         VALUES (null,\"$title\",$idWri,$year_s,$year_e,$seasons,null,\"$plot\",\"$review\",\"$poster\")");
         if($db->insert_id)return $db->insert_id;
@@ -138,36 +142,42 @@ class addModel{
     }
 
     function insertArtist($art){
-        $db = new \mysqli("localhost","root","","w2w");
+        global $db;
+        //$db = new \mysqli("localhost","root","","w2w");
         $db->query("INSERT INTO artist (id,name,birthDate) VALUES (null,\"$art\",null)");
         if($db->insert_id)return $db->insert_id;
         else return $this->idArt($art);
     }
 
     function insertGenre($gen){
-        $db = new \mysqli("localhost","root","","w2w");
+        global $db;
+        //$db = new \mysqli("localhost","root","","w2w");
         $db->query("INSERT INTO genre (id,name) VALUES (null,\"$gen\")");
         if($db->insert_id)return $db->insert_id;
         else return $this->idGen($gen);
     }
 
     function insertMovieCast($idMov,$idAct){
-        $db = new \mysqli("localhost","root","","w2w");
+        global $db;
+        //$db = new \mysqli("localhost","root","","w2w");
         $db->query("INSERT INTO moviecast(id_movie,id_act) VALUES ($idMov,$idAct)");
     }
 
     function insertMovieGenre($idMov,$idGen){
-        $db = new \mysqli("localhost","root","","w2w");
+        global $db;
+        //$db = new \mysqli("localhost","root","","w2w");
         $db->query("INSERT INTO moviegenre(id_movie,id_genre) VALUES ($idMov,$idGen)");
     }
 
     function insertTVShowCast($idTVShow,$idAct){
-        $db = new \mysqli("localhost","root","","w2w");
+        global $db;
+        //$db = new \mysqli("localhost","root","","w2w");
         $db->query("INSERT INTO tvshowcast(id_tvshow,id_act) VALUES($idTVShow,$idAct)");
     }
 
     function insertTVShowGenre($idTVShow,$idGen){
-        $db = new \mysqli("localhost","root","","w2w");
+        global $db;
+        //$db = new \mysqli("localhost","root","","w2w");
         $db->query("INSERT INTO tvshowgenre(id_tvshow,id_genre) VALUES ($idTVShow,$idGen)");
     }
 
